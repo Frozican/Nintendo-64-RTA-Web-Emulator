@@ -37,5 +37,6 @@ document.getElementById('pause').addEventListener('click',()=>setStatus('Use the
 document.getElementById('fullscreen').addEventListener('click',()=>{const el=document.querySelector('.screen');if(el.requestFullscreen)el.requestFullscreen().catch(()=>setStatus('Fullscreen could not be enabled.'))});
 const held=new Set();const keys={ArrowUp:'ArrowUp',ArrowDown:'ArrowDown',ArrowLeft:'ArrowLeft',ArrowRight:'ArrowRight',KeyX:'KeyA',KeyC:'KeyB',KeyZ:'KeyZ',Enter:'Enter',KeyI:'KeyI',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyQ:'KeyL',KeyW:'KeyR',ShiftLeft:'ShiftLeft',Numpad5:'Numpad5'};
 function paint(){document.querySelectorAll('[data-key]').forEach(el=>el.classList.toggle('active',held.has(el.dataset.key)));let x=0,y=0;if(held.has('ArrowLeft'))x-=1;if(held.has('ArrowRight'))x+=1;if(held.has('ArrowUp'))y-=1;if(held.has('ArrowDown'))y+=1;document.getElementById('nub').style.left=(50+x*25)+'%';document.getElementById('nub').style.top=(50+y*25)+'%'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
 window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();held.add(keys[e.code]||e.code);paint()});window.addEventListener('keyup',e=>{held.delete(keys[e.code]||e.code);held.delete(e.code);paint()});window.addEventListener('blur',()=>{held.clear();paint()});
 </script></body></html>
