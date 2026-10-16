@@ -10,17 +10,8 @@
 .hero{padding:34px 0 22px}.eyebrow{color:var(--mint);text-transform:uppercase;font-weight:800;letter-spacing:.15em;font-size:11px}.hero h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.055em;margin:10px 0}.hero p,.muted{color:var(--muted);line-height:1.6}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}.panel{background:linear-gradient(150deg,#1b2030,#111520 72%);border:1px solid var(--line);border-radius:18px;padding:16px}.screen{background:#050609;border-radius:12px;overflow:hidden;min-height:240px;aspect-ratio:4/3;display:grid;place-items:center;position:relative}#game{width:100%;height:100%;min-height:240px}#game canvas{max-width:100%;max-height:100%;object-fit:contain}.load{position:absolute;z-index:2;display:grid;gap:12px;justify-items:center;text-align:center;padding:20px}.btn,label.file{border:0;border-radius:10px;padding:11px 15px;background:linear-gradient(90deg,#a99eff,#70ead0);color:#0a0d13;font-weight:800;cursor:pointer;display:inline-block}.btn.secondary{background:#222b3d;color:var(--text);border:1px solid #39445c}.btn:disabled{opacity:.55;cursor:not-allowed}input[type=file]{display:none}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.status{font-size:12px;color:var(--muted);margin-top:10px;min-height:18px}.side h2{font-size:17px;margin:0 0 12px}.controller{background:#0d111a;border:1px solid #ffffff14;border-radius:14px;padding:12px}.topbuttons{display:flex;justify-content:space-between;gap:14px;margin:0 16px 12px}.key{border:1px solid #65718b;background:#242d40;color:#f3f6ff;border-radius:8px;min-width:38px;padding:8px 10px;text-align:center;font-weight:800;box-shadow:inset 0 -3px #101521;transition:.06s}.key.active{background:#65e6c2;color:#09120f;border-color:#b4fff0;transform:translateY(1px);box-shadow:none}.middle{display:flex;justify-content:space-between;align-items:center;gap:12px}.dpad{display:grid;grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px);gap:3px}.dpad .key{min-width:0;padding:4px;border-radius:5px}.stick{width:96px;height:96px;border:2px solid #5a6680;border-radius:50%;background:radial-gradient(circle,#28344a,#121824);position:relative}.nub{width:34px;height:34px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#65e6c2;border:3px solid #c4fff2;box-shadow:0 2px 8px #0008}.ab{display:flex;gap:8px;justify-content:center;margin:15px 0 3px}.ab .key{border-radius:50%;width:42px;height:42px;display:grid;place-items:center}.cbuttons{display:grid;grid-template-columns:repeat(3,30px);gap:4px;justify-content:center;margin-top:10px}.cbuttons .key{min-width:0;padding:6px 0}.legend{font-size:11px;color:var(--muted);line-height:1.5;margin-top:12px}.notice{margin-top:16px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:12px;line-height:1.6}footer{padding:24px 0;color:#7f899f;font-size:12px}a{color:#b8b0ff}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.side{order:2}.screen{min-height:220px}.top{gap:10px}.pill{font-size:9px}}
-/* Hide EmulatorJS's mobile menu toggle and bottom menu bar without altering other controls. */
-.ejs_virtualGamepad_menu,
-.ejs_virtualGamepad_menu_button,
-.ejs_menu_button,
-.ejs_menuButton,
-.ejs_bottom_menu,
-.ejs_bottom_menu_bar,
-.ejs_menu_bar,
-.ejs_menuBar,
-#game .ejs_menu,
-#game .ejs_toolbar {
+/* Hide only EmulatorJS's touchscreen hamburger menu button. */
+.ejs_virtualGamepad_open {
   display:none!important;
   visibility:hidden!important;
   opacity:0!important;
