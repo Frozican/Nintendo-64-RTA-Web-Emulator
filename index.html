@@ -23,17 +23,18 @@
 .n64-top,.n64-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
 .n64-bottom{margin:14px 0 0}
 .n64-key{display:inline-grid;place-items:center;min-width:38px;min-height:28px;padding:5px 9px;border:2px solid #090e19;border-radius:8px;background:linear-gradient(#626f89,#303c55);box-shadow:inset 0 2px #9aa6bd,0 2px #65718a;color:#fff;font-size:11px;font-weight:900}
-.n64-layout{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.n64-dpad{width:94px;height:94px;position:relative;flex:0 0 94px}
+.n64-layout{display:grid;grid-template-columns:minmax(70px,1fr) minmax(76px,1fr) minmax(90px,1fr);justify-items:center;align-items:center;gap:clamp(4px,1.5vw,12px);min-width:0}
+.n64-dpad{width:84px;height:84px;position:relative;flex:0 0 84px;max-width:100%}
 .n64-dir{position:absolute;display:grid;place-items:center;border:3px solid #090e19;border-radius:5px;background:linear-gradient(135deg,#36445f,#1c263a);box-shadow:inset 2px 2px #596781,inset -2px -2px #111827;color:#dce8ff;font-size:12px;font-weight:900}
-.n64-dir.up,.n64-dir.down{left:32px;width:30px;height:38px}.n64-dir.up{top:0}.n64-dir.down{bottom:0}
-.n64-dir.left,.n64-dir.right{top:32px;width:38px;height:30px}.n64-dir.left{left:0}.n64-dir.right{right:0}
-.n64-stick-wrap{display:flex;flex-direction:column;align-items:center;gap:7px}.n64-stick{width:78px;height:78px;border:3px solid #52617d;border-radius:50%;background:radial-gradient(circle,#273752,#0d1422);position:relative;box-shadow:inset 0 0 0 7px #111b2d}.n64-nub{position:absolute;width:27px;height:27px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#00e5d0;border:3px solid #c5fff7;box-shadow:0 0 10px #00e5d088}
+.n64-dir.up,.n64-dir.down{left:27px;width:30px;height:36px}.n64-dir.up{top:0}.n64-dir.down{bottom:0}
+.n64-dir.left,.n64-dir.right{top:27px;width:36px;height:30px}.n64-dir.left{left:0}.n64-dir.right{right:0}
+.n64-stick-wrap{display:flex;flex-direction:column;align-items:center;gap:7px}.n64-stick{width:72px;height:72px;border:3px solid #52617d;border-radius:50%;background:radial-gradient(circle,#273752,#0d1422);position:relative;box-shadow:inset 0 0 0 7px #111b2d}.n64-nub{position:absolute;width:27px;height:27px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#00e5d0;border:3px solid #c5fff7;box-shadow:0 0 10px #00e5d088}
 .n64-caption,.n64-hint{font-size:10px;letter-spacing:.08em;color:#8398c6;text-align:center}.n64-z{margin-top:2px;min-width:48px;background:linear-gradient(#1762e9,#10449c)}
-.n64-facepad{position:relative;width:100px;height:106px;flex:0 0 100px}.n64-face{position:absolute;display:grid;place-items:center;width:42px;height:42px;border:3px solid #e7edfa;border-radius:50%;color:#fff;font-weight:900;text-shadow:1px 2px #343434;box-shadow:inset 0 -5px #0005,0 3px #3e4960}.n64-face.a{right:0;top:32px;background:#13a65d}.n64-face.b{left:5px;top:51px;background:#1762e9}.n64-c{position:absolute;display:grid;place-items:center;width:28px;height:28px;border:2px solid #e7edfa;border-radius:50%;background:#e9b600;color:#161b28;font-size:9px;font-weight:900}.c-up{top:0;right:10px}.c-left{top:30px;left:0}.c-right{top:30px;right:0}.c-down{bottom:0;right:10px}
+.n64-facepad{position:relative;width:100px;height:108px;min-width:0;flex:0 1 100px}.n64-face{position:absolute;display:grid;place-items:center;width:42px;height:42px;border:3px solid #e7edfa;border-radius:50%;color:#fff;font-weight:900;text-shadow:1px 2px #343434;box-shadow:inset 0 -5px #0005,0 3px #3e4960}.n64-face.a{right:0;top:32px;background:#13a65d}.n64-face.b{left:0;top:60px;background:#1762e9}.n64-c{position:absolute;display:grid;place-items:center;width:28px;height:28px;border:2px solid #e7edfa;border-radius:50%;background:#e9b600;color:#161b28;font-size:9px;font-weight:900}.c-up{top:0;right:10px}.c-left{top:30px;left:0}.c-right{top:30px;right:0}.c-down{bottom:0;right:10px}
 #n64-hud [data-key].active{filter:brightness(1.5);background:#318bff!important;box-shadow:0 0 12px #318bff88;transform:scale(.93)}
 .n64-hint{margin:14px 0 0;letter-spacing:0}
-@media(max-width:800px){#n64-hud{padding:12px}.n64-layout{gap:8px}.n64-dpad{transform:scale(.88);margin:-5px}.n64-stick{width:68px;height:68px}.n64-facepad{transform:scale(.88);transform-origin:center;margin:-5px}}
+@media(max-width:800px){#n64-hud{padding:12px}.n64-layout{grid-template-columns:minmax(64px,1fr) minmax(64px,1fr) minmax(80px,1fr);gap:4px}.n64-dpad{transform:scale(.82);margin:-6px}.n64-stick{width:64px;height:64px}.n64-facepad{transform:scale(.82);transform-origin:center;margin:-8px}.n64-face{width:38px;height:38px}.n64-c{width:25px;height:25px}.n64-top,.n64-bottom{margin-bottom:10px}.n64-bottom{margin:10px 0 0}}
+@media(max-width:360px){#n64-hud{padding:8px}.n64-layout{grid-template-columns:64px 64px 76px;justify-content:space-between}.n64-dpad{transform:scale(.72);margin:-12px}.n64-facepad{transform:scale(.72);margin:-14px}.n64-stick{width:58px;height:58px}.n64-caption{font-size:9px}.n64-key{min-width:32px;padding:4px 6px}}
 </style>
 </head>
 <body><div class="wrap">
@@ -66,8 +67,8 @@ function bootFromUrl(){if(!romUrl)return;const fileUrl=romUrl;window.EJS_player=
 
 document.getElementById('fullscreen').addEventListener('click',()=>{const el=document.querySelector('.screen');if(el.requestFullscreen)el.requestFullscreen().catch(()=>setStatus('Fullscreen could not be enabled.'))});
 const held=new Set();const keys={ArrowUp:'ArrowUp',ArrowDown:'ArrowDown',ArrowLeft:'ArrowLeft',ArrowRight:'ArrowRight',KeyX:'KeyA',KeyC:'KeyB',KeyZ:'KeyZ',Enter:'Enter',KeyI:'KeyI',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyQ:'KeyL',KeyW:'KeyR',ShiftLeft:'ShiftLeft',Numpad5:'Numpad5'};
-function paint(){document.querySelectorAll('#n64-hud [data-key]').forEach(el=>el.classList.toggle('active',held.has(el.dataset.key)));let x=0,y=0;if(held.has('ArrowLeft'))x-=1;if(held.has('ArrowRight'))x+=1;if(held.has('ArrowUp'))y-=1;if(held.has('ArrowDown'))y+=1;document.getElementById('nub').style.left=(50+x*25)+'%';document.getElementById('nub').style.top=(50+y*25)+'%'}
+function paint(){document.querySelectorAll('#n64-hud [data-key]').forEach(el=>el.classList.toggle('active',held.has(el.dataset.key)||held.has(({KeyX:'KeyA',KeyC:'KeyB',KeyQ:'KeyL',KeyW:'KeyR'})[el.dataset.key]||'__none__')));let x=0,y=0;if(held.has('ArrowLeft'))x-=1;if(held.has('ArrowRight'))x+=1;if(held.has('ArrowUp'))y-=1;if(held.has('ArrowDown'))y+=1;document.getElementById('nub').style.left=(50+x*25)+'%';document.getElementById('nub').style.top=(50+y*25)+'%'}
 
 document.addEventListener('contextmenu',e=>e.preventDefault());
-window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();held.add(keys[e.code]||e.code);paint()});window.addEventListener('keyup',e=>{held.delete(keys[e.code]||e.code);held.delete(e.code);paint()});window.addEventListener('blur',()=>{held.clear();paint()});
+window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();held.add(e.code);held.add(keys[e.code]||e.code);paint()});window.addEventListener('keyup',e=>{held.delete(keys[e.code]||e.code);held.delete(e.code);paint()});window.addEventListener('blur',()=>{held.clear();paint()});
 </script></body></html>
