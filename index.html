@@ -17,20 +17,43 @@
   opacity:0!important;
   pointer-events:none!important;
 }
+
+/* SNES RTA-inspired N64 controller HUD */
+#n64-hud{background:#080e1b;border:2px solid #40527c;box-shadow:4px 4px 0 #03060d;padding:16px;color:#e5edff;font-family:ui-monospace,monospace;user-select:none}
+.n64-top,.n64-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.n64-bottom{margin:14px 0 0}
+.n64-key{display:inline-grid;place-items:center;min-width:38px;min-height:28px;padding:5px 9px;border:2px solid #090e19;border-radius:8px;background:linear-gradient(#626f89,#303c55);box-shadow:inset 0 2px #9aa6bd,0 2px #65718a;color:#fff;font-size:11px;font-weight:900}
+.n64-layout{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.n64-dpad{width:94px;height:94px;position:relative;flex:0 0 94px}
+.n64-dir{position:absolute;display:grid;place-items:center;border:3px solid #090e19;border-radius:5px;background:linear-gradient(135deg,#36445f,#1c263a);box-shadow:inset 2px 2px #596781,inset -2px -2px #111827;color:#dce8ff;font-size:12px;font-weight:900}
+.n64-dir.up,.n64-dir.down{left:32px;width:30px;height:38px}.n64-dir.up{top:0}.n64-dir.down{bottom:0}
+.n64-dir.left,.n64-dir.right{top:32px;width:38px;height:30px}.n64-dir.left{left:0}.n64-dir.right{right:0}
+.n64-stick-wrap{display:flex;flex-direction:column;align-items:center;gap:7px}.n64-stick{width:78px;height:78px;border:3px solid #52617d;border-radius:50%;background:radial-gradient(circle,#273752,#0d1422);position:relative;box-shadow:inset 0 0 0 7px #111b2d}.n64-nub{position:absolute;width:27px;height:27px;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:#00e5d0;border:3px solid #c5fff7;box-shadow:0 0 10px #00e5d088}
+.n64-caption,.n64-hint{font-size:10px;letter-spacing:.08em;color:#8398c6;text-align:center}.n64-z{margin-top:2px;min-width:48px;background:linear-gradient(#1762e9,#10449c)}
+.n64-facepad{position:relative;width:100px;height:106px;flex:0 0 100px}.n64-face{position:absolute;display:grid;place-items:center;width:42px;height:42px;border:3px solid #e7edfa;border-radius:50%;color:#fff;font-weight:900;text-shadow:1px 2px #343434;box-shadow:inset 0 -5px #0005,0 3px #3e4960}.n64-face.a{right:0;top:32px;background:#13a65d}.n64-face.b{left:5px;top:51px;background:#1762e9}.n64-c{position:absolute;display:grid;place-items:center;width:28px;height:28px;border:2px solid #e7edfa;border-radius:50%;background:#e9b600;color:#161b28;font-size:9px;font-weight:900}.c-up{top:0;right:10px}.c-left{top:30px;left:0}.c-right{top:30px;right:0}.c-down{bottom:0;right:10px}
+#n64-hud [data-key].active{filter:brightness(1.5);background:#318bff!important;box-shadow:0 0 12px #318bff88;transform:scale(.93)}
+.n64-hint{margin:14px 0 0;letter-spacing:0}
+@media(max-width:800px){#n64-hud{padding:12px}.n64-layout{gap:8px}.n64-dpad{transform:scale(.88);margin:-5px}.n64-stick{width:68px;height:68px}.n64-facepad{transform:scale(.88);transform-origin:center;margin:-5px}}
 </style>
 </head>
 <body><div class="wrap">
 <header class="top"><div class="brand">Frozican <span style="color:#8f99b0;font-weight:600">/ NINTENDO 64 RTA</span></div><div class="pill">BROWSER EMULATOR</div></header>
 <main><section class="hero"><div class="eyebrow">Real-time gameplay · Nintendo 64</div><h1>Nintendo 64 RTA Emulator</h1><p>Load your own legally obtained N64 ROM and play in your browser. The controller display visualizes keyboard input.</p></section>
 <div class="layout"><section class="panel"><div class="screen"><div id="game"></div><div class="load" id="load"><strong>Ready to play?</strong><span class="muted">Choose an N64 ROM file to get started.</span><label class="file" for="rom">Choose ROM (.z64, .n64, .v64)</label><input id="rom" type="file" accept=".z64,.n64,.v64,application/octet-stream"></div></div>
-<div class="actions"><button class="btn" id="start">Start / Restart</button><button class="btn secondary" id="pause">Pause / Resume</button><button class="btn secondary" id="fullscreen">Fullscreen</button><label class="btn secondary" for="rom2">Load another ROM</label><input id="rom2" type="file" accept=".z64,.n64,.v64,application/octet-stream"></div><div class="status" id="status" role="status">Select a ROM to begin.</div>
+<div class="actions"><button class="btn" id="start">Start / Restart</button><button class="btn secondary" id="fullscreen">Fullscreen</button><label class="btn secondary" for="rom2">Load another ROM</label><input id="rom2" type="file" accept=".z64,.n64,.v64,application/octet-stream"></div><div class="status" id="status" role="status">Select a ROM to begin.</div>
 <div class="notice"><b>RTA note:</b> This is an experimental browser emulator. The input display shows mapped keyboard keys; it does not measure frame-perfect timing or guarantee deterministic playback. Emulator support and performance depend on your browser and device.</div></section>
-<aside class="panel side"><h2>Controller Input</h2><div class="controller" aria-label="Nintendo 64 controller input display">
-<div class="topbuttons"><span class="key" data-key="KeyL">L</span><span class="key" data-key="KeyR">R</span></div>
-<div class="middle"><div class="dpad"><span></span><span class="key" data-key="ArrowUp">▲</span><span></span><span class="key" data-key="ArrowLeft">◀</span><span class="key" data-key="Numpad5">●</span><span class="key" data-key="ArrowRight">▶</span><span></span><span class="key" data-key="ArrowDown">▼</span><span></span></div>
-<div><div class="key" data-key="KeyZ">Z</div><div class="stick" id="stick"><div class="nub" id="nub"></div></div></div></div>
-<div class="ab"><span class="key" data-key="KeyB">B</span><span class="key" data-key="KeyA">A</span></div><div class="cbuttons"><span></span><span class="key" data-key="KeyI">C▲</span><span></span><span class="key" data-key="KeyJ">C◀</span><span class="key" data-key="KeyK">C▼</span><span class="key" data-key="KeyL">C▶</span></div><div class="topbuttons" style="margin:14px 0 0"><span class="key" data-key="Enter">START</span><span class="key" data-key="ShiftLeft">Z/TRIG</span></div></div>
-<div class="legend">Keyboard mapping: Arrow keys = analog stick · X = A · C = B · Z = Z trigger · Enter = Start · I/J/K/L = C buttons · Q/W = L/R. The display is a visual aid, not a verified readout of emulator-internal controller state.</div></aside></div></main>
+<aside class="panel side"><h2>Controller Input</h2>
+<div id="n64-hud" aria-label="Nintendo 64 controller input display">
+  <div class="n64-top"><span class="n64-key" data-key="KeyQ">L</span><span class="n64-key" data-key="KeyW">R</span></div>
+  <div class="n64-layout">
+    <div class="n64-dpad"><span class="n64-dir up" data-key="ArrowUp">▲</span><span class="n64-dir left" data-key="ArrowLeft">◀</span><span class="n64-dir right" data-key="ArrowRight">▶</span><span class="n64-dir down" data-key="ArrowDown">▼</span></div>
+    <div class="n64-stick-wrap"><div class="n64-stick"><div class="n64-nub" id="nub"></div></div><span class="n64-caption">ANALOG</span><span class="n64-key n64-z" data-key="KeyZ">Z</span></div>
+    <div class="n64-facepad"><span class="n64-face n64-a" data-key="KeyX">A</span><span class="n64-face n64-b" data-key="KeyC">B</span><span class="n64-c c-up" data-key="KeyI">C▲</span><span class="n64-c c-left" data-key="KeyJ">C◀</span><span class="n64-c c-down" data-key="KeyK">C▼</span><span class="n64-c c-right" data-key="KeyL">C▶</span></div>
+  </div>
+  <div class="n64-bottom"><span class="n64-key" data-key="Enter">START</span><span class="n64-key" data-key="ShiftLeft">Z/TRIG</span></div>
+  <p class="n64-hint">Live keyboard and gamepad input display</p>
+</div>
+</aside></div></main>
 <footer>Unofficial fan project · No ROMs are included. <a href="https://github.com/Frozican/Nintendo-64-RTA-Web-Emulator">View source on GitHub</a></footer></div>
 <script>
 const statusEl=document.getElementById('status'), loadEl=document.getElementById('load'), gameEl=document.getElementById('game');
@@ -40,10 +63,10 @@ function boot(file){if(!file)return;if(romUrl)URL.revokeObjectURL(romUrl);romUrl
 document.getElementById('rom').addEventListener('change',e=>boot(e.target.files[0]));document.getElementById('rom2').addEventListener('change',e=>boot(e.target.files[0]));
 document.getElementById('start').addEventListener('click',()=>{if(!romUrl){document.getElementById('rom').click();return}bootFromUrl()});
 function bootFromUrl(){if(!romUrl)return;const fileUrl=romUrl;window.EJS_player='#game';window.EJS_core='n64';window.EJS_gameUrl=fileUrl;window.EJS_pathtodata='https://cdn.emulatorjs.org/stable/data/';window.EJS_startOnLoaded=true;gameEl.innerHTML='';const old=document.getElementById('emulatorjs-loader');if(old)old.remove();const s=document.createElement('script');s.id='emulatorjs-loader';s.src='https://cdn.emulatorjs.org/stable/data/loader.js';s.onload=()=>setStatus('Emulator started or reloading.');s.onerror=()=>setStatus('EmulatorJS failed to load.');document.body.appendChild(s);loadEl.style.display='none'}
-document.getElementById('pause').addEventListener('click',()=>setStatus('Use the emulator toolbar’s pause control if available. Pause hotkey support varies by core/browser.'));
+
 document.getElementById('fullscreen').addEventListener('click',()=>{const el=document.querySelector('.screen');if(el.requestFullscreen)el.requestFullscreen().catch(()=>setStatus('Fullscreen could not be enabled.'))});
 const held=new Set();const keys={ArrowUp:'ArrowUp',ArrowDown:'ArrowDown',ArrowLeft:'ArrowLeft',ArrowRight:'ArrowRight',KeyX:'KeyA',KeyC:'KeyB',KeyZ:'KeyZ',Enter:'Enter',KeyI:'KeyI',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyQ:'KeyL',KeyW:'KeyR',ShiftLeft:'ShiftLeft',Numpad5:'Numpad5'};
-function paint(){document.querySelectorAll('[data-key]').forEach(el=>el.classList.toggle('active',held.has(el.dataset.key)));let x=0,y=0;if(held.has('ArrowLeft'))x-=1;if(held.has('ArrowRight'))x+=1;if(held.has('ArrowUp'))y-=1;if(held.has('ArrowDown'))y+=1;document.getElementById('nub').style.left=(50+x*25)+'%';document.getElementById('nub').style.top=(50+y*25)+'%'}
+function paint(){document.querySelectorAll('#n64-hud [data-key]').forEach(el=>el.classList.toggle('active',held.has(el.dataset.key)));let x=0,y=0;if(held.has('ArrowLeft'))x-=1;if(held.has('ArrowRight'))x+=1;if(held.has('ArrowUp'))y-=1;if(held.has('ArrowDown'))y+=1;document.getElementById('nub').style.left=(50+x*25)+'%';document.getElementById('nub').style.top=(50+y*25)+'%'}
 
 document.addEventListener('contextmenu',e=>e.preventDefault());
 window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();held.add(keys[e.code]||e.code);paint()});window.addEventListener('keyup',e=>{held.delete(keys[e.code]||e.code);held.delete(e.code);paint()});window.addEventListener('blur',()=>{held.clear();paint()});
