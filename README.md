@@ -7,7 +7,7 @@ A browser-based Nintendo 64 emulator front end with a simple, real-time controll
 ## Features
 
 - Load a local N64 ROM file (`.z64`, `.n64`, or `.v64`)
-- Runs through [EmulatorJS](https://emulatorjs.org/) using its N64 core
+- Browser-based N64 emulation
 - On-page controller visualization for keyboard input
 - Fullscreen mode
 - Dark, responsive layout for desktop and mobile
@@ -33,15 +33,14 @@ A browser-based Nintendo 64 emulator front end with a simple, real-time controll
 | I / J / K / L | C buttons |
 | Q / W | L / R |
 
-The controller display is a visual aid. Its mapping may not exactly match EmulatorJS's active controller mapping in every browser or configuration.
+The controller display is a visual aid. Its mapping may not exactly match the active emulator input mapping in every browser or configuration.
 
 ## Important limitations
 
 - This is an experimental RTA front end, not a frame-accurate TAS tool.
 - It does not guarantee deterministic playback, frame stepping, or frame-perfect timing.
-- Compatibility and performance depend on the browser, device, ROM, and EmulatorJS.
+- Compatibility and performance depend on the browser, device, and ROM.
 - The pause/restart controls may not behave like native emulator controls in every situation.
-- EmulatorJS is loaded from its public CDN, so an internet connection is required.
 
 ## ROMs and legal note
 
@@ -49,6 +48,6 @@ No game ROMs are included or hosted by this project. Select only ROM files you a
 
 ## Development
 
-The site is a static HTML page hosted with GitHub Pages. The emulator loader and supporting assets are provided by EmulatorJS.
+The site is a static HTML page hosted with GitHub Pages. The page loads its emulator runtime and supporting assets from a public CDN, so an internet connection is required.
 
 Repository: https://github.com/Frozican/Nintendo-64-RTA-Web-Emulator
